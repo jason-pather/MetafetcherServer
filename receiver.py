@@ -10,14 +10,18 @@ from flask import request
 
 app = Flask(__name__)
 
+global counter = 0;
+
 @app.route('/receiver', methods=['POST'])
 def receiver():
 
 	if request.headers['Content-Type'] == 'text/plain':
-		return "text received"
+		counter++;
+		return "text received, counter is "+counter
 	else:
-		return "other"
+		counter++;
+		return "other, counter is "+counter
 
 @app.route('/receiver', methods=['GET'])
 def other():
-	return "received GET request"
+	return "received GET request, counter is "+counter
