@@ -4,6 +4,7 @@ import string,cgi,time
 from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler
 from flask import Flask
+from flask import json
 #import pri
 
 app = Flask(__name__)
@@ -19,4 +20,3 @@ def receiver():
 @app.route('/receiver', methods=['GET'])
 def other():
 	return "received GET request"
-	
