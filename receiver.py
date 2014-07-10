@@ -18,6 +18,7 @@ def receiver():
 	global counter
 	global typeOf
 	counter+=1;
+	typeOf = "default"
 
 	if request.headers['Content-Type'] == 'text/plain':
 		typeOf = 'textplain'
