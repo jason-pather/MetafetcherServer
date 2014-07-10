@@ -18,7 +18,7 @@ def receiver():
 	global counter
 	global typeOf
 	counter+=1;
-	typeOf = "default"
+	typeOf = 'default'
 
 	if request.headers['Content-Type'] == 'text/plain':
 		typeOf = 'textplain'
@@ -32,4 +32,4 @@ def receiver():
 
 @app.route('/receiver', methods=['GET'])
 def other():
-	return "received GET request, counter is " + str(counter)+ " last type: "+str(typeOf)
+	return "received GET request, counter is " + str(counter)
