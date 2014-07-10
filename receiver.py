@@ -11,4 +11,6 @@ app = Flask(__name__)
 @app.route('/receiver', methods=['POST'])
 def receiver():
 
+	if request.headers['Content-Type'] == 'text/plain':
+        return "Text Message: " + request.data
 	return 'receiver got post'
