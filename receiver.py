@@ -3,8 +3,9 @@
 import string,cgi,time
 from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler
-from flask import Flask
+from flask import Flask, url_for
 from flask import json
+from flask import request
 #import pri
 
 app = Flask(__name__)
