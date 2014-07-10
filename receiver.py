@@ -11,4 +11,12 @@ app = Flask(__name__)
 @app.route('/receiver', methods=['POST'])
 def receiver():
 
-	return "Text message received: "+ request.data
+	if request.headers['Content-Type'] == 'text/plain':
+		return "text received"
+	else:
+		return "other"
+
+@app.route('/receiver', methods=['GET'])
+def other():
+	return "received GET request"
+	
