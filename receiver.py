@@ -8,7 +8,7 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/receiver', methods=['GET'])
+@app.route('/receiver', methods=['POST'])
 def receiver():
 
-	return 'receiver'
+	return 'receiver got post'
