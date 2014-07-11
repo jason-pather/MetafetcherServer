@@ -11,14 +11,13 @@ from flask import request
 app = Flask(__name__)
 
 counter = 0
+global data
+data = 'default'
 
 @app.route('/receiver', methods=['POST'])
 def receiver():
 
 	global counter
-	global data
-	data = 'default'
-
 
 	if request.headers['Content-Type'] == 'text/plain':
 		data = request.data
