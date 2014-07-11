@@ -16,20 +16,17 @@ counter = 0
 def receiver():
 
 	global counter
-	global typeOf
-	counter+=1;
-	typeOf = 'default'
+	global data
+	data = 'default'
+
 
 	if request.headers['Content-Type'] == 'text/plain':
-		typeOf = 'textplain'
-		return "Text Message: counter is "+ str(counter)+ " last type: "+str(typeOf)
-	elif request.headers['Content-Type'] == 'application/json':
-		typeOf = 'json'
-		return "JSON Message: counter is "+ str(counter)+ " last type: "+str(typeOf)
+		data = request.data
+		return "Text Message: counter is "+ str(counter)
 	else:
-		typeOf = 'unknown'
-		return "unknown type, counter is "+str(counter)+ "last type: "+ str(typeOf)
+		return "Content received does not have Content-Type = 'text/plain', counter is "+str(counter)
 
 @app.route('/receiver', methods=['GET'])
 def other():
-	return "received GET request, counter is " + str(counter)
+	global data
+	return "received GET request, counter is " + str(counter) + " data >" + data
