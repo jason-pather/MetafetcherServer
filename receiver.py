@@ -11,19 +11,21 @@ from flask import request
 app = Flask(__name__)
 
 counter = 0
-global data
 data = 'default'
 
 @app.route('/receiver', methods=['POST'])
 def receiver():
 
 	global counter
+	global data
 
 	if request.headers['Content-Type'] == 'text/plain':
 		data = request.data
+		counter += 1
 		return "Text Message: counter is "+ str(counter)
-	elif request.json:
+	elif request.headers['Content-Type'] == 'application/json':
 		data = 'json'
+		counter += 1
 		return "JSON: counter is "+ str(counter)
 	else:
 		return "Content received does not have Content-Type = 'text/plain', counter is "+str(counter)
@@ -31,4 +33,5 @@ def receiver():
 @app.route('/receiver', methods=['GET'])
 def other():
 	global data
+	global counter
 	return "received GET request, counter is " + str(counter) + " data >" + data
