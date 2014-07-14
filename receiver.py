@@ -6,6 +6,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler
 from flask import Flask, url_for
 from flask import json
 from flask import request
+from flask import render_template, jsonify
 #import pri
 
 app = Flask(__name__)
@@ -26,7 +27,9 @@ def receiver():
 	elif request.headers['Content-Type'] == 'application/json':
 		data = 'json'
 		counter += 1
-		return "JSON: counter is "+ str(counter)
+		json = request.json
+
+		return "JSON: counter is "+ str(counter)+" json: "+jsonify(json)
 	else:
 		return "Content received does not have Content-Type = 'text/plain', counter is "+str(counter)
 
