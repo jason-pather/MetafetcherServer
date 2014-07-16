@@ -27,6 +27,8 @@ def receiver():
 	elif request.headers['Content-Type'] == 'application/json':
 		data = 'json'
 		counter += 1
+		jsonObject = get_json()
+		jsonString = request.data
 		return "JSON: counter is "+ str(counter)
 	else:
 		return "Content received does not have Content-Type = 'text/plain', counter is "+str(counter)
