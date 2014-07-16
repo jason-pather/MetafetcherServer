@@ -27,9 +27,7 @@ def receiver():
 	elif request.headers['Content-Type'] == 'application/json':
 		data = 'json'
 		counter += 1
-		json = request.json
-
-		return "JSON: counter is "+ str(counter)+" json: "+jsonify(json)
+		return "JSON: counter is "+ str(counter)
 	else:
 		return "Content received does not have Content-Type = 'text/plain', counter is "+str(counter)
 
@@ -37,4 +35,5 @@ def receiver():
 def other():
 	global data
 	global counter
+	counter += 1
 	return "received GET request, counter is " + str(counter) + " data >" + data
