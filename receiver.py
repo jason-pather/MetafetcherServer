@@ -3,11 +3,9 @@
 import string,cgi,time
 from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler
-from flask import Flask, url_for
-from flask import json
-from flask import request
-from flask import render_template, jsonify
+from flask import Flask, url_for, json, request, render_template, jsonify
 from collections import namedtuple
+import urllib2
 #import pri
 
 app = Flask(__name__)
