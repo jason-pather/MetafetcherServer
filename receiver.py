@@ -26,7 +26,8 @@ def receiver():
 	elif request.headers['Content-Type'] == 'application/json':
 		data = 'json'
 		counter += 1
-		jsonObject = get_json()
+		jstr = request.json
+		# jsonObject = get_json()
 		# jsonString = request.data
 		#Log = namedtuple('Log', 'dateTimeMillis, contactNumber, durationMillis, isNew, contactName, callType, isRead')
 		# info = json.loads(jsonObject)
