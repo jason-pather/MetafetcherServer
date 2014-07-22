@@ -23,19 +23,15 @@ def receiver():
 	if request.headers['Content-Type'] == 'application/json':
 		data = 'json'
 		counter += 1
-		# jstr = request.json
-		jstr = request.get_json
-		try:
-			# jobj = json.load(jstr)
-		except Exception, e:
-			return 'json error'
+		jstr = request.json
+		# jstr = request.get_json
 		
 		# jsonObject = get_json()
 		# jsonString = request.data
 		#Log = namedtuple('Log', 'dateTimeMillis, contactNumber, durationMillis, isNew, contactName, callType, isRead')
 		# info = json.loads(jsonObject)
 		# logs = [Log(**k) for k in data["logs]"]]
-		return "JSON: counter is "+ str(counter) + " :::: "+str(jstr)
+		return "JSON: counter is "+ str(counter) + " :::: "+ str(type(jstr)) +":::"+str(jstr)
 	else:
 		return "Content received does not have Content-Type = 'json/application', counter is "+str(counter)
 
