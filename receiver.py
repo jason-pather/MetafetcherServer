@@ -24,7 +24,11 @@ def receiver():
 		data = 'json'
 		counter += 1
 		jstr = request.json
-		jobj = json.load(jstr)
+		try:
+			jobj = json.load(jstr)
+		except Exception, e:
+			return 'json error'
+		
 		# jsonObject = get_json()
 		# jsonString = request.data
 		#Log = namedtuple('Log', 'dateTimeMillis, contactNumber, durationMillis, isNew, contactName, callType, isRead')
