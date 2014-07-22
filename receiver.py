@@ -20,15 +20,11 @@ def receiver():
 	global counter
 	global data
 
-	if request.headers['Content-Type'] == 'text/plain':
-		data = request.data
-		counter += 1
-		return "Text/plain Message: counter is "+ str(counter)
-	elif request.headers['Content-Type'] == 'application/json':
+	if request.headers['Content-Type'] == 'application/json':
 		data = 'json'
 		counter += 1
 		jstr = request.json
-		jobj = json.loads(jstr)
+		# jobj = json.loads(jstr)
 		# jsonObject = get_json()
 		# jsonString = request.data
 		#Log = namedtuple('Log', 'dateTimeMillis, contactNumber, durationMillis, isNew, contactName, callType, isRead')
@@ -36,7 +32,7 @@ def receiver():
 		# logs = [Log(**k) for k in data["logs]"]]
 		return "JSON: counter is "+ str(counter) + " :::: "+str(jstr)
 	else:
-		return "Content received does not have Content-Type = 'text/plain', counter is "+str(counter)
+		return "Content received does not have Content-Type = 'json/application', counter is "+str(counter)
 
 @app.route('/receiver', methods=['GET'])
 def other():
