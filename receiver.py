@@ -31,7 +31,7 @@ def receiver():
 		jsonObject = get_json()
 		# jsonString = request.data
 		#Log = namedtuple('Log', 'dateTimeMillis, contactNumber, durationMillis, isNew, contactName, callType, isRead')
-		info = json.loads(jsonObject)
+		# info = json.loads(jsonObject)
 		# logs = [Log(**k) for k in data["logs]"]]
 		return "JSON: counter is "+ str(counter)
 	else:
