@@ -23,7 +23,8 @@ def receiver():
 	if request.headers['Content-Type'] == 'application/json':
 		data = 'json'
 		counter += 1
-		jstr = request.json
+		# jstr = request.json
+		jstr = request.get_json
 		try:
 			jobj = json.load(jstr)
 		except Exception, e:
