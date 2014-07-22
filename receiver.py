@@ -26,7 +26,7 @@ def receiver():
 		# jstr = request.json
 		jstr = request.get_json
 		try:
-			jobj = json.load(jstr)
+			# jobj = json.load(jstr)
 		except Exception, e:
 			return 'json error'
 		
