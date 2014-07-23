@@ -25,8 +25,8 @@ def receiver():
 		counter += 1
 		jstr = request.json
 		for ka in jstr
-			string = ka
-			
+			string = "g"
+
 		# jstr = request.get_json
 		
 		# jsonObject = get_json()
