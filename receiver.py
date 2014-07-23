@@ -24,6 +24,9 @@ def receiver():
 		data = 'json'
 		counter += 1
 		jstr = request.json
+		for ka, va in obj.iteritems():
+			string = ka 
+
 		# jstr = request.get_json
 		
 		# jsonObject = get_json()
