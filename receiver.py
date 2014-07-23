@@ -25,7 +25,7 @@ def receiver():
 		counter += 1
 		jstr = request.json
 		for var in jstr
-			varType = type(var)
+			varType = "type"
 
 		# jstr = request.get_json
 		
