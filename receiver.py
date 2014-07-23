@@ -24,8 +24,8 @@ def receiver():
 		data = 'json'
 		counter += 1
 		jstr = request.json
-		for ka in jstr
-			string = "g"
+		for var in jstr
+			varType = type(var)
 
 		# jstr = request.get_json
 		
