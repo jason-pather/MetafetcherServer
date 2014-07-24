@@ -25,7 +25,8 @@ def receiver():
 		jsonList = request.json
 		for jsonObject in jsonList:
 			if jsonObject.get("type") == "call":
-				return storeCallLog(jsonObject)
+				storeCallLog(jsonObject)
+				return str(data)
 
 	# if request.headers['Content-Type'] == 'application/json':
 	# 	data = 'json'
@@ -47,7 +48,8 @@ def receiver():
 	# 	return "Content received does not have Content-Type = 'json/application', counter is "+str(counter)
 
 def storeCallLog(callLog):
-	return "storing call log"
+	global data
+	data = "call"
 
 @app.route('/receiver', methods=['GET'])
 def other():
