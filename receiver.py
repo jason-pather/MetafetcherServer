@@ -7,12 +7,27 @@ from flask import Flask, url_for, json, request, render_template, jsonify
 from collections import namedtuple
 import urllib2
 import json
+import os
+import psycopg2
+import urlparse
 #import pri
 
 app = Flask(__name__)
 
 counter = 0
 data = 'default'
+DATABASE_URL = "postgres://lktnxhpcfqcgqn:u20nbLpjDVw9t8I32vGeZFtJ_s@ec2-54-204-44-31.compute-1.amazonaws.com:5432/deu22ov7a7ojk"
+
+urlparse.uses_netloc.append("postgres")
+url = urlparse.urlparse(os.environ[DATABASE_URL])
+
+conn = psycopg2.connect(
+    database=url.path[1:],
+    user=url.username,
+    password=url.password,
+    host=url.hostname,
+    port=url.port
+)
 
 @app.route('/receiver', methods=['POST'])
 def receiver():
@@ -21,18 +36,30 @@ def receiver():
 	global data
 
 	if (request.headers['Content-Type'] == 'application/json'):
-		# jsonList is list, jsonObject is dict
+		# jsonList is list, jsonObjectDict is dict
 		jsonList = request.json
 		for jsonObject in jsonList:
-			if jsonObject.get("type") == "call":
-				storeCallLog(jsonObject)
-	return str(data)
+			jsonObjectDict = json.loads(jsonObject)
+			if jsonObjectDict.get("type") == "call":
+				storeCallLog(jsonObjectDict)
+			elif jsonObjectDict.get("type") == "text":
+				storeTextLog(jsonObjectDict)
+			else return "ERROR: log was not call or text"
+
+
+
+
+				
 
 	
 
+	
 def storeCallLog(callLog):
-	global data
-	data = "call"
+	return "call Log"
+
+def storeTextLog(callLog):
+
+
 
 @app.route('/receiver', methods=['GET'])
 def other():
