@@ -31,10 +31,10 @@ data = 'default'
 
 
 def storeCallLog(callLog):
-	argv "call Log"
+	return "call Log"
 
 def storeTextLog(callLog):
-	arg = "r"
+	return "text log"
 
 
 @app.route('/receiver', methods=['POST'])
@@ -49,9 +49,9 @@ def receiver():
 		for jsonObject in jsonList:
 			jsonObjectDict = json.loads(jsonObject)
 			if jsonObjectDict.get("type") == "call":
-				storeCallLog(jsonObjectDict)
+				return storeCallLog(jsonObjectDict)
 			elif jsonObjectDict.get("type") == "text":
-				storeTextLog(jsonObjectDict)
+				return storeTextLog(jsonObjectDict)
 
 
 @app.route('/receiver', methods=['GET'])
