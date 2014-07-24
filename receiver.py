@@ -16,17 +16,16 @@ app = Flask(__name__)
 
 counter = 0
 data = 'default'
-
 urlparse.uses_netloc.append("postgres")
 # url = urlparse.urlparse(os.environ["DATABASE_URL]")
 
-# conn = psycopg2.connect(
-#     database=url.path[1:],
-#     user=url.username,
-#     password=url.password,
-#     host=url.hostname,
-#     port=url.port
-# )
+
+def storeCallLog(callLog):
+	return "call Log"
+
+def storeTextLog(callLog):
+	arg = "r"
+
 
 @app.route('/receiver', methods=['POST'])
 def receiver():
@@ -43,21 +42,6 @@ def receiver():
 				storeCallLog(jsonObjectDict)
 			elif jsonObjectDict.get("type") == "text":
 				storeTextLog(jsonObjectDict)
-			else return "ERROR: log was not call or text"
-
-
-
-
-				
-
-	
-
-	
-def storeCallLog(callLog):
-	return "call Log"
-
-def storeTextLog(callLog):
-
 
 
 @app.route('/receiver', methods=['GET'])
@@ -66,6 +50,20 @@ def other():
 	global counter
 	counter += 1
 	return "received GET request, counter is " + str(counter) + " data >" + data
+
+# urlparse.uses_netloc.append("postgres")
+# url = urlparse.urlparse(os.environ["DATABASE_URL]")
+
+# conn = psycopg2.connect(
+#     database=url.path[1:],
+#     user=url.username,
+#     password=url.password,
+#     host=url.hostname,
+#     port=url.port
+# )
+
+
+
 
 
 # if request.headers['Content-Type'] == 'application/json':
