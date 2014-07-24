@@ -16,7 +16,7 @@ app = Flask(__name__)
 
 counter = 0
 data = 'default'
-urlparse.uses_netloc.append("postgres")
+# urlparse.uses_netloc.append("postgres")
 # url = urlparse.urlparse(os.environ["DATABASE_URL]")
 
 
@@ -29,6 +29,7 @@ def storeTextLog(callLog):
 
 @app.route('/receiver', methods=['POST'])
 def receiver():
+	# urlparse.uses_netloc.append("postgres")
 
 	global counter
 	global data
