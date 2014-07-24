@@ -29,7 +29,7 @@ def storeTextLog(callLog):
 
 @app.route('/receiver', methods=['POST'])
 def receiver():
-	# urlparse.uses_netloc.append("postgres")
+	urlparse.uses_netloc.append("postgres")
 
 	global counter
 	global data
