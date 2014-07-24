@@ -21,13 +21,13 @@ DATABASE_URL = "postgres://lktnxhpcfqcgqn:u20nbLpjDVw9t8I32vGeZFtJ_s@ec2-54-204-
 urlparse.uses_netloc.append("postgres")
 url = urlparse.urlparse(os.environ[DATABASE_URL])
 
-conn = psycopg2.connect(
-    database=url.path[1:],
-    user=url.username,
-    password=url.password,
-    host=url.hostname,
-    port=url.port
-)
+# conn = psycopg2.connect(
+#     database=url.path[1:],
+#     user=url.username,
+#     password=url.password,
+#     host=url.hostname,
+#     port=url.port
+# )
 
 @app.route('/receiver', methods=['POST'])
 def receiver():
