@@ -35,7 +35,7 @@ def receiver():
 		#Log = namedtuple('Log', 'dateTimeMillis, contactNumber, durationMillis, isNew, contactName, callType, isRead')
 		# info = json.loads(jsonObject)
 		# logs = [Log(**k) for k in data["logs]"]]
-		return "JSON: counter is "+ str(counter) + " :::: "+ str(type(jstr)) +":::"+str(jstr)+":::"+str(varType)
+		return "JSON: counter is "+ str(counter) + " :::: "+ str(type(jstr)) +":::"+str(jstr)+":::"+str(varType)+":::"+type(info)
 	else:
 		return "Content received does not have Content-Type = 'json/application', counter is "+str(counter)
 
