@@ -26,6 +26,7 @@ def receiver():
 		jstr = request.json
 		for var in jstr:
 			varType = type(var)
+			info = json.loads(var)
 
 		# jstr = request.get_json
 		
