@@ -26,9 +26,23 @@ def receiver():
 		for jsonObject in jsonList:
 			if jsonObject.get("type") == "call":
 				storeCallLog(jsonObject)
-				return str(data)
+	return str(data)
 
-	# if request.headers['Content-Type'] == 'application/json':
+	
+
+def storeCallLog(callLog):
+	global data
+	data = "call"
+
+@app.route('/receiver', methods=['GET'])
+def other():
+	global data
+	global counter
+	counter += 1
+	return "received GET request, counter is " + str(counter) + " data >" + data
+
+
+# if request.headers['Content-Type'] == 'application/json':
 	# 	data = 'json'
 	# 	counter += 1
 	# 	jstr = request.json
@@ -46,14 +60,3 @@ def receiver():
 	# 	return "JSON: counter is "+ str(counter) + " :::: "+ str(type(jstr)) +":::"+str(jstr)+":::"+str(varType)+":::"+str(type(info))
 	# else:
 	# 	return "Content received does not have Content-Type = 'json/application', counter is "+str(counter)
-
-def storeCallLog(callLog):
-	global data
-	data = "call"
-
-@app.route('/receiver', methods=['GET'])
-def other():
-	global data
-	global counter
-	counter += 1
-	return "received GET request, counter is " + str(counter) + " data >" + data
