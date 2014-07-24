@@ -20,24 +20,34 @@ def receiver():
 	global counter
 	global data
 
-	if request.headers['Content-Type'] == 'application/json':
-		data = 'json'
-		counter += 1
-		jstr = request.json
-		for var in jstr:
-			varType = type(var)
-			info = json.loads(var)
+	if (request.headers['Content-Type'] == 'application/json'):
+		# jsonList is list, jsonObject is dict
+		jsonList = request.json
+		for jsonObject in jsonList:
+			if jsonObject.get("type") == "call":
+				return storeCallLog(jsonObject)
 
-		# jstr = request.get_json
+	# if request.headers['Content-Type'] == 'application/json':
+	# 	data = 'json'
+	# 	counter += 1
+	# 	jstr = request.json
+	# 	for var in jstr:
+	# 		varType = type(var)
+	# 		info = json.loads(var)
+
+	# 	# jstr = request.get_json
 		
-		# jsonObject = get_json()
-		# jsonString = request.data
-		#Log = namedtuple('Log', 'dateTimeMillis, contactNumber, durationMillis, isNew, contactName, callType, isRead')
-		# info = json.loads(jsonObject)
-		# logs = [Log(**k) for k in data["logs]"]]
-		return "JSON: counter is "+ str(counter) + " :::: "+ str(type(jstr)) +":::"+str(jstr)+":::"+str(varType)+":::"+str(type(info))
-	else:
-		return "Content received does not have Content-Type = 'json/application', counter is "+str(counter)
+	# 	# jsonObject = get_json()
+	# 	# jsonString = request.data
+	# 	#Log = namedtuple('Log', 'dateTimeMillis, contactNumber, durationMillis, isNew, contactName, callType, isRead')
+	# 	# info = json.loads(jsonObject)
+	# 	# logs = [Log(**k) for k in data["logs]"]]
+	# 	return "JSON: counter is "+ str(counter) + " :::: "+ str(type(jstr)) +":::"+str(jstr)+":::"+str(varType)+":::"+str(type(info))
+	# else:
+	# 	return "Content received does not have Content-Type = 'json/application', counter is "+str(counter)
+
+def storeCallLog(callLog):
+	return "storing call log"
 
 @app.route('/receiver', methods=['GET'])
 def other():
