@@ -16,10 +16,9 @@ app = Flask(__name__)
 
 counter = 0
 data = 'default'
-DATABASE_URL = "postgres://lktnxhpcfqcgqn:u20nbLpjDVw9t8I32vGeZFtJ_s@ec2-54-204-44-31.compute-1.amazonaws.com:5432/deu22ov7a7ojk"
 
 urlparse.uses_netloc.append("postgres")
-url = urlparse.urlparse(os.environ[DATABASE_URL])
+url = urlparse.urlparse(os.environ["DATABASE_URL]")
 
 # conn = psycopg2.connect(
 #     database=url.path[1:],
