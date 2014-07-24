@@ -31,7 +31,7 @@ data = 'default'
 
 
 def storeCallLog(callLog):
-	return "call Log"
+	argv "call Log"
 
 def storeTextLog(callLog):
 	arg = "r"
@@ -60,19 +60,6 @@ def other():
 	global counter
 	counter += 1
 	return "received GET request, counter is " + str(counter) + " data >" + data
-
-# urlparse.uses_netloc.append("postgres")
-# url = urlparse.urlparse(os.environ["DATABASE_URL]")
-
-# conn = psycopg2.connect(
-#     database=url.path[1:],
-#     user=url.username,
-#     password=url.password,
-#     host=url.hostname,
-#     port=url.port
-# )
-
-
 
 
 
