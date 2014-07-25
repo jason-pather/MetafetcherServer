@@ -43,6 +43,13 @@ def connectToDB():
 	global connected
 	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 	url = urlparse.urlparse(SQLALCHEMY_DATABASE_URI)
+	conn = psycopg2.connect(
+	    database=url.path[1:],
+	    user=url.username,
+	    password=url.password,
+	    host=url.hostname,
+	    port=url.port
+	)
 
 	connected = True
 
