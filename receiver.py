@@ -51,7 +51,7 @@ def connectToDB():
 	    host=url.hostname,
 	    port=url.port
 	)
-	db = SQLAlchemy(app)
+	# db = SQLAlchemy(app)
 
 	connected = True
 
