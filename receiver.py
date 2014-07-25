@@ -15,6 +15,7 @@ import urlparse
 
 app = Flask(__name__)
 # heroku pg:psql
+# db name: deu22ov7a7ojk6
 
 counter = 0
 data = 'default'
