@@ -62,8 +62,7 @@ def receiver():
 	global connected
 
 
-	if (not connected):
-		connectToDB()
+	connectToDB()
 
 	if (request.headers['Content-Type'] == 'application/json'):
 		# jsonList is list, jsonObjectDict is dict
