@@ -41,6 +41,7 @@ def storeTextLog(callLog):
 def receiver():
 
 	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+	return SQLALCHEMY_DATABASE_URI
 
 	global counter
 	global data
