@@ -5,6 +5,7 @@ from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler
 from flask import Flask, url_for, json, request, render_template, jsonify
 from collections import namedtuple
+# from flask.ext.sqlalchemy import SQLAlchemy
 import urllib2
 import json
 import os
@@ -50,6 +51,7 @@ def connectToDB():
 	    host=url.hostname,
 	    port=url.port
 	)
+	db = SQLAlchemy(app)
 
 	connected = True
 
