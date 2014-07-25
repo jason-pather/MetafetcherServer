@@ -37,8 +37,8 @@ cur = None
 
 
 def storeCallLog(callLog):
-	# query = "SELECT ...."
-	# cur.execute(query)
+	query = "SELECT * from calllogs"
+	cur.execute(query)
 	return "call Log"
 
 def storeTextLog(callLog):
