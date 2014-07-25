@@ -17,6 +17,7 @@ app = Flask(__name__)
 
 counter = 0
 data = 'default'
+connected = False
 # urlparse.uses_netloc.append("postgres")
 # url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
@@ -38,16 +39,24 @@ def storeCallLog(callLog):
 def storeTextLog(callLog):
 	return "text log"
 
+def connectToDB():
+	global connected
+	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+	url = urlparse.urlparse(SQLALCHEMY_DATABASE_URI)
+
+	connected = True
+
 
 @app.route('/receiver', methods=['POST'])
 def receiver():
 
-	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
-	url = urlparse.urlparse(SQLALCHEMY_DATABASE_URI)
-	return SQLALCHEMY_DATABASE_URI
-
 	global counter
 	global data
+	global connected
+
+
+	if (not connected):
+		connectToDB()
 
 	if (request.headers['Content-Type'] == 'application/json'):
 		# jsonList is list, jsonObjectDict is dict
