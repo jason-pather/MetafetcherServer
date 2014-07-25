@@ -21,7 +21,6 @@ data = 'default'
 connected = False
 db = None
 cur = None
-conn = None
 # urlparse.uses_netloc.append("postgres")
 # url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
@@ -39,11 +38,10 @@ conn = None
 
 def storeCallLog(callLog):
 	global cur
-	global conn
 	# query = "SELECT * from calllogs;"
-	query = "INSERT INTO calllogs VALUES (\'calltype\', \'name\', 100, 100, true, false, \'contactNo\', \'callType\');"
-	cur.execute(query)
-	conn.close()
+	# query = "INSERT INTO calllogs VALUES (\'calltype\', \'name\', 100, 100, true, false, \'contactNo\', \'callType\');"
+	# cur.execute(query)
+	# conn.close()
 	return "call Log"
 
 def storeTextLog(callLog):
@@ -58,7 +56,10 @@ def connectToDB():
 	url = urlparse.urlparse(SQLALCHEMY_DATABASE_URI)
 	conn = psycopg2.connect("dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname))
 	cur = conn.cursor()
-
+	query = "INSERT INTO calllogs VALUES (\'calltype\', \'name\', 100, 100, true, false, \'contactNo\', \'callType\');"
+	cur.execute(query)
+	conn.close()
+	return "connected to db"
 
 
 	# conn = psycopg2.connect(
@@ -79,10 +80,9 @@ def receiver():
 	global counter
 	global data
 	global connected
-	global conn
 
 
-	connectToDB()
+	return connectToDB()
 
 	if (request.headers['Content-Type'] == 'application/json'):
 		# jsonList is list, jsonObjectDict is dict
@@ -93,7 +93,6 @@ def receiver():
 				return storeCallLog(jsonObjectDict)
 			elif jsonObjectDict.get("type") == "text":
 				return storeTextLog(jsonObjectDict)
-	conn.close()
 
 
 @app.route('/receiver', methods=['GET'])
