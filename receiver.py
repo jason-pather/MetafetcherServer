@@ -40,6 +40,8 @@ def storeTextLog(callLog):
 @app.route('/receiver', methods=['POST'])
 def receiver():
 
+	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+
 	global counter
 	global data
 
