@@ -38,7 +38,8 @@ cur = None
 
 def storeCallLog(callLog):
 	global cur
-	query = "INSERT INTO calllogs VALUES (\"calltype\", \"name\", 100, 100, true, false, \"contactNo\", \"callType\");"
+	query = "INSERT INTO test VALUES (\"testname\");"
+	# query = "INSERT INTO calllogs VALUES (\"calltype\", \"name\", 100, 100, true, false, \"contactNo\", \"callType\");"
 	cur.execute(query)
 	return "call Log"
 
