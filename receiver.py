@@ -56,7 +56,7 @@ def connectToDB():
 	url = urlparse.urlparse(os.environ['DATABASE_URL'])
 	conn = psycopg2.connect("dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname))
 	cur = conn.cursor()
-	query = "INSERT INTO calllogs VALUES (\'calltype\', \'name\', 100, 100, true, false, \'contactNo\', \'callType\');"
+	query = "INSERT INTO fake VALUES (\'calltype\', \'name\', 100, 100, true, false, \'contactNo\', \'callType\');"
 	cur.execute(query)
 	conn.close()
 	return "connected to db"
