@@ -37,7 +37,7 @@ cur = None
 
 
 def storeCallLog(callLog):
-	query = "SELECT * from calllogs"
+	query = "INSERT INTO table calllogs VALUES {\"calltype\", \"name\", 100, 100, true, false, \"contactNo\", \"callType\"}"
 	cur.execute(query)
 	return "call Log"
 
