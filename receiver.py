@@ -52,8 +52,8 @@ def connectToDB():
 	global app
 	global db
 	global cur
-	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
-	url = urlparse.urlparse(SQLALCHEMY_DATABASE_URI)
+	urlparse.uses_netloc.append("postgres")
+	url = urlparse.urlparse(os.environ['DATABASE_URL'])
 	conn = psycopg2.connect("dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname))
 	cur = conn.cursor()
 	query = "INSERT INTO calllogs VALUES (\'calltype\', \'name\', 100, 100, true, false, \'contactNo\', \'callType\');"
