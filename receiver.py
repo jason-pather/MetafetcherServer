@@ -39,9 +39,11 @@ conn = None
 
 def storeCallLog(callLog):
 	global cur
+	global conn
 	# query = "SELECT * from calllogs;"
 	query = "INSERT INTO calllogs VALUES (\'calltype\', \'name\', 100, 100, true, false, \'contactNo\', \'callType\');"
 	cur.execute(query)
+	conn.close()
 	return "call Log"
 
 def storeTextLog(callLog):
