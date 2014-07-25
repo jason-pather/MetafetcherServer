@@ -21,6 +21,7 @@ data = 'default'
 connected = False
 db = None
 cur = None
+conn = None
 # urlparse.uses_netloc.append("postgres")
 # url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
@@ -76,6 +77,7 @@ def receiver():
 	global counter
 	global data
 	global connected
+	global conn
 
 
 	connectToDB()
@@ -89,6 +91,7 @@ def receiver():
 				return storeCallLog(jsonObjectDict)
 			elif jsonObjectDict.get("type") == "text":
 				return storeTextLog(jsonObjectDict)
+	conn.close()
 
 
 @app.route('/receiver', methods=['GET'])
