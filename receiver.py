@@ -28,6 +28,8 @@ data = 'default'
 #     port=url.port
 # )
 
+# postgres://lktnxhpcfqcgqn:u20nbLpjDVw9t8I32vGeZFtJ_s@ec2-54-204-44-31.compute-1.amazonaws.com:5432/deu22ov7a7ojk6
+
 
 
 def storeCallLog(callLog):
@@ -41,6 +43,7 @@ def storeTextLog(callLog):
 def receiver():
 
 	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+	url = urlparse.urlparse(SQLALCHEMY_DATABASE_URI)
 	return SQLALCHEMY_DATABASE_URI
 
 	global counter
