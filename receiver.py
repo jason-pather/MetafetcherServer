@@ -42,6 +42,7 @@ def storeTextLog(callLog):
 
 def connectToDB():
 	global connected
+	global app
 	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 	url = urlparse.urlparse(SQLALCHEMY_DATABASE_URI)
 	conn = psycopg2.connect(
