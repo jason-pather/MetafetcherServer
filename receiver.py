@@ -19,6 +19,8 @@ app = Flask(__name__)
 counter = 0
 data = 'default'
 connected = False
+db = None
+cur = None
 # urlparse.uses_netloc.append("postgres")
 # url = urlparse.urlparse(os.environ["DATABASE_URL"])
 
@@ -35,6 +37,8 @@ connected = False
 
 
 def storeCallLog(callLog):
+	# query = "SELECT ...."
+	# cur.execute(query)
 	return "call Log"
 
 def storeTextLog(callLog):
@@ -43,16 +47,23 @@ def storeTextLog(callLog):
 def connectToDB():
 	global connected
 	global app
+	global db
+	global cur
 	SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 	url = urlparse.urlparse(SQLALCHEMY_DATABASE_URI)
-	conn = psycopg2.connect(
-	    database=url.path[1:],
-	    user=url.username,
-	    password=url.password,
-	    host=url.hostname,
-	    port=url.port
-	)
-	db = SQLAlchemy(app)
+	conn = psycopg2.connect("dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname))
+	cur = conn.cursor()
+
+
+
+	# conn = psycopg2.connect(
+	#     database=url.path[1:],
+	#     user=url.username,
+	#     password=url.password,
+	#     host=url.hostname,
+	#     port=url.port
+	# )
+	# db = SQLAlchemy(app)
 
 	connected = True
 
